@@ -123,7 +123,7 @@ var riddle4 = {
 
     "hl6": "Hex",
 
-    "hex": "Italienische Scheibe.",
+    "hex": "C.D. Friedrich wandert über der Nebelvariante.",
 }
 
 var riddles = [
