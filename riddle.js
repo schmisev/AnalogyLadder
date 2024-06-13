@@ -139,6 +139,7 @@ var riddleId;
 var game_state = [0, 0, 0, 0, 0];
 
 function setup(r = 0) {
+    game_state = [0, 0, 0, 0, 0];
     riddleId = r;
     riddle = riddles[riddleId];
 
