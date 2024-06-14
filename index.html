@@ -12,8 +12,9 @@
         <div class="main-body">
             <button class="ui-button ui-title">Analogietreppe #<span id="riddle-id">0</span> (<span id="riddle-date">0</span>)</button>
             <span class="fill-space"></span>
-            <button class="ui-button ui-right-button" onclick="nextRiddle()">Nächstes Rätsel ▶</button>
-            <button class="ui-button ui-right-button" id="last-riddle-button" onclick="lastRiddle()">◀ Letztes Rätsel</button>
+            <button class="ui-button" id="ui-lang" onclick="switchLanguage()">ENG</button>
+            <button class="ui-button ui-right-button" id="next-riddle-button" onclick="nextRiddle()">▶</button>
+            <button class="ui-button ui-right-button" id="last-riddle-button" onclick="lastRiddle()">◀</button>
             <table class="riddle-table">
                 <tr>
                     <td class="riddle-cell root-cell" style="border-radius: 9px 3px 3px 3px;">1</td>

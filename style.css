@@ -144,7 +144,7 @@ h1 {
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
-    margin: 25% auto; /* 15% from the top and centered */
+    margin: 5% auto; /* 15% from the top and centered */
     text-align: center;
     font-size: 30px;
     padding: 30px;

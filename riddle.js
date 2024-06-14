@@ -29,7 +29,6 @@ var riddle1 = {
 
     "hex": "... trägt Freund Hein.",
 }
-
 var riddle2 = {
     "number": "2",
     "date": "24-06-12",
@@ -61,7 +60,6 @@ var riddle2 = {
 
     "hex": "... gibts auch als Diagramm.",
 }
-
 var riddle3 = {
     "number": "3",
     "date": "24-06-12",
@@ -93,7 +91,6 @@ var riddle3 = {
 
     "hex": "Italienische Scheibe.",
 }
-
 var riddle4 = {
     "number": "4",
     "date": "24-06-13",
@@ -126,31 +123,103 @@ var riddle4 = {
     "hex": "C.D. Friedrich wandert über der Nebelvariante.",
 }
 
+var engRiddle1 = {
+    "number": "1",
+    "date": "24-06-13",
+
+    "root": "plane",
+    "hr0": "hangar",
+
+    "hl1": "car",
+    "i1": "carport",
+    "hr1": "house",
+
+    "hl2": "hill",
+    "i2": "mountain",
+    "hr2": "work",
+
+    "hl3": "loads",
+    "i3": "fun",
+    "hr3": "misery",
+
+    "hl4": "love",
+    "i4": "hate",
+    "hr4": "rate",
+
+    "hl5": "hope",
+    "i5": "rope",
+    "hr5": "hang",
+
+    "hl6": "handplane",
+
+    "hex": "Rhymes with gun.",
+}
+
+var engRiddle2 = {
+    "number": "2",
+    "date": "24-06-14",
+
+    "root": "wild",
+    "hr0": "tame",
+
+    "hl1": "beast",
+    "i1": "pet",
+    "hr1": "sounds",
+
+    "hl2": "abbey",
+    "i2": "road",
+    "hr2": "path",
+
+    "hl3": "river",
+    "i3": "creek",
+    "hr3": "meek",
+
+    "hl4": "look",
+    "i4": "rook",
+    "hr4": "bishop",
+
+    "hl5": "straight",
+    "i5": "diagonal",
+    "hr5": "rectangle",
+
+    "hl6": "safari",
+
+    "hex": "Cripple ...",
+}
+
+
 var riddles = [
-    riddle1,
-    riddle2,
+    riddle4,
     riddle3,
-    riddle4
+    riddle2,
+    riddle1
+];
+
+var engRiddles = [
+    engRiddle2,
+    engRiddle1,
 ];
 
 var riddle;
 var riddleId;
 
 var game_state = [0, 0, 0, 0, 0];
+var lang = "de";
 
 function setup(r = 0) {
     game_state = [0, 0, 0, 0, 0];
     riddleId = r;
-    riddle = riddles[riddleId];
+
+    if (lang === "de") {
+        riddle = riddles[riddleId];
+        document.getElementById("ui-lang").innerHTML = "de";
+    } else {
+        riddle = engRiddles[riddleId];
+        document.getElementById("ui-lang").innerHTML = "en";
+    }
 
     document.getElementById("riddle-id").innerHTML = riddle.number;
     document.getElementById("riddle-date").innerHTML = riddle.date;
-
-    if (riddleId == 0) {
-        document.getElementById("last-riddle-button").disabled = true;
-    } else {
-        document.getElementById("last-riddle-button").disabled = false;
-    }
 
     for (const e of document.getElementsByClassName("guess-input")) {
         e.disabled = false;
@@ -253,11 +322,24 @@ function closeWithX() {
 }
 
 function nextRiddle() {
-    riddleId = (riddleId + 1) % riddles.length;
+    if (riddleId < riddles.length - 1) riddleId = (riddleId + 1);
     setup(riddleId);
 }
 
 function lastRiddle() {
     if (riddleId > 0) riddleId = (riddleId - 1);
     setup(riddleId);
+}
+
+function switchLanguage() {
+    switch(lang) {
+        case "de":
+            lang = "en";
+            break;
+        case "en":
+            lang = "de"
+            break;
+    }
+
+    setup(0);
 }
