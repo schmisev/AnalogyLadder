@@ -187,6 +187,38 @@ var engRiddle2 = {
     "hex": "Cripple ...",
 }
 
+var engRiddle3 = {
+    "number": "3",
+    "date": "24-06-15",
+
+    "root": "gas",
+    "hr0": "shell",
+
+    "hl1": "search",
+    "i1": "google",
+    "hr1": "goggle",
+
+    "hl2": "loo",
+    "i2": "log",
+    "hr2": "x",
+
+    "hl3": "x",
+    "i3": ["exp", "exp(x)", "e^x", "e"],
+    "hr3": "export",
+
+    "hl4": "apt",
+    "i4": "apartment",
+    "hr4": "complex",
+
+    "hl5": "cell",
+    "i5": "block",
+    "hr5": "obstruct",
+
+    "hl6": "vapour",
+
+    "hex": "A gamer might earn this.",
+}
+
 
 var riddles = [
     riddle4,
@@ -196,6 +228,7 @@ var riddles = [
 ];
 
 var engRiddles = [
+    engRiddle3,
     engRiddle2,
     engRiddle1,
 ];
@@ -243,7 +276,23 @@ function setup(r = 0) {
 function checkGuess(inp) {
     if(event.key === 'Enter') {
 
-        if (inp.value.toLowerCase() === riddle[inp.id].toLowerCase()) {
+        var correct = false;
+        if (Array.isArray(riddle[inp.id])) {
+            inp.value = riddle[inp.id][0];
+            for (const r of riddle[inp.id]) {
+                if (inp.value.toLowerCase() === r.toLowerCase()) {
+                    correct = true;
+                    break;
+                }
+            }
+        } else {
+            inp.value = riddle[inp.id];
+            if (inp.value.toLowerCase() === riddle[inp.id].toLowerCase()) {
+                correct = true;
+            }
+        } 
+
+        if (correct) {
             //inp.style.backgroundColor = "rgb(120, 200, 30)";
             inp.classList.add("correct");
             console.log(inp.value, "is correct!");
@@ -255,7 +304,6 @@ function checkGuess(inp) {
             game_state[inp.id.slice(1) - 1] = -1;
         }
 
-        inp.value = riddle[inp.id];
         console.log(inp, inp.dataset);
 
         inp.disabled = true;
