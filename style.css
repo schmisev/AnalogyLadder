@@ -126,6 +126,12 @@ h1 {
     background-color: bisque;
 }
 
+.check-button {
+    width: 100%;
+    display: block;
+    position: relative;
+}
+
 /* The Modal (background) */
 .modal {
     font-family: Arial, Helvetica, sans-serif;
