@@ -122,6 +122,39 @@ var riddle4 = {
 
     "hex": "C.D. Friedrich wandert über der Nebelvariante.",
 }
+var riddle5 = {
+    "number": "5",
+    "date": "24-06-16",
+
+    "root": "Schild",
+    "hr0": "Sign",
+
+    "hl1": "Tor",
+    "i1": "Gate",
+    "hr1": "Tage",
+
+    "hl2": "Kater",
+    "i2": "Kreta",
+    "hr2": "Minotaurus",
+
+    "hl3": "Theben",
+    "i3": "Sphinx",
+    "hr3": "Rätsel",
+
+    "hl4": "Reporter",
+    "i4": ["Frage", "Fragen"],
+    "hr4": "Zeichen",
+
+    "hl5": "Semi",
+    "i5": ["Colon", "Kolon"],
+    "hr5": "Darm",
+
+    "hl6": "Shield",
+
+    "hex": "Geflügelte Würgerin",
+
+    "grade": "hard",
+}
 
 var engRiddle1 = {
     "number": "1",
@@ -221,6 +254,7 @@ var engRiddle3 = {
 
 
 var riddles = [
+    riddle5,
     riddle4,
     riddle3,
     riddle2,
@@ -253,6 +287,12 @@ function setup(r = 0) {
 
     document.getElementById("riddle-id").innerHTML = riddle.number;
     document.getElementById("riddle-date").innerHTML = riddle.date;
+
+    if (riddle.hasOwnProperty("grade")) {
+        document.getElementById("riddle-grade").innerHTML = riddle.grade;
+    } else {
+        document.getElementById("riddle-grade").innerHTML = "easy";
+    }
 
     for (const e of document.getElementsByClassName("guess-input")) {
         e.disabled = false;
