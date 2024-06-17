@@ -153,7 +153,7 @@ var riddle5 = {
 
     "hex": "Geflügelte Würgerin",
 
-    "grade": "hard",
+    "grade": "⭐⭐",
 }
 
 var engRiddle1 = {
@@ -291,7 +291,7 @@ function setup(r = 0) {
     if (riddle.hasOwnProperty("grade")) {
         document.getElementById("riddle-grade").innerHTML = riddle.grade;
     } else {
-        document.getElementById("riddle-grade").innerHTML = "easy";
+        document.getElementById("riddle-grade").innerHTML = "⭐";
     }
 
     for (const e of document.getElementsByClassName("guess-input")) {
@@ -326,10 +326,10 @@ function checkGuess(inp) {
                 }
             }
         } else {
-            inp.value = riddle[inp.id];
             if (inp.value.toLowerCase() === riddle[inp.id].toLowerCase()) {
                 correct = true;
             }
+            inp.value = riddle[inp.id];
         } 
 
         if (correct) {
